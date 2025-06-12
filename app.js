@@ -1,484 +1,356 @@
-/*
-Exercise 1: Define an empty array
+console.log("arrays and iterating")
+// ARRAYS
+// A data type in javascript*
+// *not really
 
-1) Create an empty array and assign it to a variable called `foods`.
+// technically an OBJECT or DATA STRUCTURE
+// a LIST
 
-Exercise 1 has been completed for you:
-*/
+// you can declare an array 
 
-const foods = [];  
+const arr = [] // don't call/name an array: "array" or "Array"
 
-console.log('Exercise 1 result:', foods);
+console.log(arr)
 
+// Arrays contain ELEMENTS, separated by commas
 
+// an ELEMENT in an array can be ANY DATA TYPE AT ALL.
+// (num, str, bool, null, obj, func,)
 
+// in practice all elements in an array are USUALLY the same data type.
+// but they do not have to be 
 
 
-/*
-Exercise 2: Add strings to the array
+// declare an array of strings...
 
-1) Add 'pizza' and 'cheeseburger' to the `foods` array. 
+//const list = ['chair', 'table', 'candle', 'couch', 'bed', 'dresser']
 
-Note: 'pizza' should be the first item in the array, followed by 'cheeseburger'.
+//... or we can use numbers
 
-Complete Exercise 2 in the space below:
-*/
+const squares = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 
-foods.push('pizza', 'cheeseburger');
+// ARRAY NAMES SHOULD ALMOST ALWAYS BE *PLURAL*
 
 
-console.log('Exercise 2 result:', foods);
+// TYPE (quickly def a few variables)
+const num = 0
+const str = "word"
+const type = "onomatopeia"
+const bool = false
 
+// you can check anything's data type with type of *OPERATOR*...
 
+// USING "typeof"...:
+console.log(typeof num) // number
+console.log(typeof str) // "string"
+console.log(typeof bool) // "boolean"
 
+const list = ['chair', 'table', 'candle', 'couch', 'bed', 'dresser']
 
-// expected output: pizza, cheeseburger...
 
 
 
+// uh oh...
+console.log(typeof list) // arrays are not actually a data type in JS
 
+// BUT if you want to check if something IS an array, use Array.isArray()
 
+console.log(Array.isArray(list)) //returns a true or false value for if it is an array or not.... 
+// (returned true in browser/console)
 
-/*
-Exercise 3: Insert at the beginning
 
-1) Insert the string 'taco' at the beginning of the `foods` array.
+// declaring array faveFoods:
+const faveFoods = ['nachos', 'sushi', 'ramen', 'pizza', 'hot dogs']
 
-Complete Exercise 3 in the space below:
-*/
+// calling our new array:
+console.log(faveFoods)
 
-foods.unshift('taco');
 
 
 
-console.log('Exercise 3 result:', foods);
 
 
-// expected output: taco, pizza, cheeseburger...
 
 
 
+//ACCESSING ELEMENTS
 
+// all array elements have an INDEX number (number in the ordered list) that can be used to access their elements
 
+// INDEX NUMBERS START AT 0
 
+// to access elements in ana rrary, use square brackets [] containing the elements INDEX NUMBER after the name of the array itself 
 
 
 
 
+// i.e. access "candle" in our list array 
+console.log(list[2])
 
+// returns "candle", the second element listed in our array from above, the THIRD element but again ARRAYS INDEX STARTS AT 0
 
+console.log(list[0])
+// returns FIRST element in our array, the ZERO spot of index...
 
 
-/*
-Exercise 4: Access an array element
+ const ghostBusters = [
+    "Venkman",
+    "Spengler",
+    "Stantz",
+    "Veddermore",
+    "Melnitz",
+    "Barrett",
+    "Tully",
+ ]
 
-1) Retrieve the 'pizza' string from the array based on its position (index) in
-   the array.  
+// access THIRD element in ghostBuster array (number in list -1 == INDEX value so 2 = third)
+console.log(ghostBusters[2])
+//returns "Stantz"
 
-2) Assign it to a variable called `favFood`.
 
-Complete Exercise 4 in the space below:
-*/
+// access FOURTH element (Melnitz)
+console.log(ghostBusters[3])
 
-favFood = foods[1];
 
+// to check where SPECIFIC ELEMENT is within the index of the array, use "indexOf"....
+console.log(ghostBusters.indexOf("Tully"))
+// returns the value "6" because it is the 7th element, but started at 0 for index of course.
+console.log(ghostBusters[6])
+// oppositely, returns "Tully"...
 
-console.log('Exercise 4 result:', favFood);
 
 
-// expected output: taco, pizza, cheeseburger...
 
 
 
 
+/* BREAK
+BREAK
+BREAK */ 
 
 
 
 
 
 
+// ARRAY LENGTH .length 
+// there is a .length property on allarrays automatically that will tell you how many elements are in the array 
 
+//.length property
+console.log(faveFoods.length)
+console.log(ghostBusters.length)
 
+console.log([1, 2, null, Infinity, "hello", false].length)
 
 
+// FUN BREAK - string interpolation with template liters (ES6)
 
-/*
-Exercise 5: Insert an element between two others
 
-1) Insert the string 'tofu' between 'pizza' and 'cheeseburger' in the array.
+console.log('There are ${ghostBusters.length} elements in the ghostBusters array.')
 
-Complete Exercise 5 in the space below:
-*/
 
-foods.splice(2, 0, 'tofu');
-//insert at index 2, deleting 0 items
+console.log("There are " + ghostBusters.length + " elements in the ghostBusters array.")
 
 
-console.log('Exercise 5 result:', foods);
 
 
-// expected output: taco, pizza, tofu, cheeseburger...
 
+// USE AN EXPRESSION WHOSE VALUE IS A NUMBER as an Array Index
+// an expression that is evaluated to a value is == to that value.
 
 
+//ex without hardcoding 6, print the last element of the ghostBusters array
+const final = ghostBusters.length - 1
 
+console.log(final)
 
+console.log(ghostBusters[final])
 
+console.log(ghostBusters[ghostBusters.length - 1])
 
-/*
-Exercise 6: Replace elements
 
-1) Replace 'pizza' in the `foods` array with 'sushi' and 'cupcake'.
+// CHANGING ELEMENTS IN AN ARRAY
+const veggies = ['red pepper', 'corn', 'potato', 'okra', 'celery']
 
-Complete Exercise 6 in the space below:
-*/
+//you can cahnge an element by accessing it and using the assignment operator "="
 
-foods.splice(1, 1, 'sushi', 'cupcake');
-// at index 1, replacing 1, 2 added to array...
 
-console.log('Exercise 6 result:', foods);
+// to change "corn" to "spinach"....
+veggies[1] = 'spinach'
 
-// expected output: taco, sushi, cupcake, tofu, cheeseburger...
+console.log(veggies)
 
 
 
 
+// declaring an array uses CONST always... so cannot change the whole array, only the elements
+// aka this syntax does NOT work
+// veggies = []
 
 
 
+// ex: without using 3, change the last element in the veggies array to 'brocoli
 
 
+const last = veggies.length - 1
+console.log(veggies[last])
+// to check our work for accessing the LASt element of veggies array using new last array 
 
-/*
-Exercise 7: Using the `slice()` method
+veggies[last] = 'brocoli'
+console.log(veggies)
 
-1) Use the `slice()` method to create a new array that contains 'sushi' and 
-   'cupcake'.
+console.log(veggies[last])
+//now returns the value 'brocoli'
 
-2) Assign it to a variable named `yummy`.
 
-Complete Exercise 7 in the space below:
-*/
 
-const yummy = [foods.slice(1, 3)];
-// new array from 'foods' extracting from index 1, up to but not including index 3
 
-console.log('Exercise 7 result:', yummy);
+/// MOVING MY CAR ~
 
 
-// expected output: sushi, cupcake...
 
+//remember you can use ANY expression to access elements 
+//LIST has 6 elements
+console.log(list.length)
+console.log(list[2 * 2])
 
+// think: if my list has an even # of elements, how do i access the one to the right of the middle 
+// hint: can write an expression to calculate that value? 
 
+console.log(list[list.length / 2])
+console.log(list.length / 2)
 
 
 
 
+// ITERATING:
+// using a loop to access the elements in an array in order iterating.
 
+const kitchenSink = ['dirty spoon', 'sponge', 'messy plate', 'soap', 'water']
 
+//let's print every item in t he array using a loop
+//inside the loop:
+// "i" is 0, then 1, then 2, then 3, then 4, then the loop stops (end of array)
 
-
-/*
-Exercise 8: Finding an index
-
-1) Using the `indexOf()` method, find the index of the string 'tofu' in the 
-   `foods` array. 
-
-2) Assign it to a variable named `soyIdx`.
-
-Complete Exercise 8 in the space below:
-*/
-
-soyIdx = foods.indexOf("tofu");
-
-// expected output: 3
-
-console.log('Exercise 8 result:', soyIdx);
-
-
-
-
-
-
-
-
-
-/*
-Exercise 9: Joining elements
-
-1) Use the `join()` method to concatenate the strings in the `foods` array, 
-   separated by ' -> '. 
-
-2) Assign the result to a variable called `allFoods`. 
-
-Note: The final result should log as:
-'taco -> sushi -> cupcake -> tofu -> cheeseburger'
-
-Complete Exercise 9 in the space below:
-*/
-
-allFoods = foods.join((" -> "));
-console.log('Exercise 9 result:', allFoods);
-
-
-
-
-
-
-
-
-
-/*
-Exercise 10: Check for an element
-
-1) Using the .includes() method, check if the `foods` array contains the string
-   'soup'.
-
-2) Assign the result to a variable called `hasSoup``.
-
-Complete Exercise 10 in the space below:
-*/
-
-hasSoup = foods.includes('soup');
-
-console.log('Exercise 10 result:', hasSoup);
-
-// expected output: false
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-Exercise 11: Odd numbers from an array
-
-1) Choose a method to iterate through the `nums` array.
-
-2) Push each odd number to a new array named `odds`.
-
-Hint: Initialize the `odds` variable to an empty array before the iteration.
-
-Complete Exercise 11 in the space below:
-*/
-
-const nums = [100, 5, 23, 15, 21, 72, 9, 45, 66, 7, 81, 90];
-
-// we want to push odd numbers; elements at index 1, 2, 3, 4, 6, 7, 9 and 10
-
-const odds = [];
-nums.forEach((num) => {
-    if (num%2 === 1) {
-        odds.push(num);
-    }
-});
-
-console.log('Exercise 11 result:', odds);
-
-// expected output: 5, 23, 15, 21, 9, 45, 7, 81
-
-
-
-
-
-
-
-
-
-/*
-Exercise 12: FizzBuzz with arrays
-
-1) Choose a method to iterate through the `nums` array. 
-
-2. As you loop, sort the numbers into new arrays based on the following rules:
-
-   - Push any number evenly divisible by 3 to an array called `fizz`.
-   - Push any number evenly divisible by 5 to an array called `buzz`.
-   - Push any number that is evenly divisible by 3 and 5 to an array called
-     `fizzbuzz`.
-
-   Note: A single number may meet more than one of the above rules. If it does,
-         it should be placed in multiple arrays. For example, the number `15`
-         will appear in the `fizz`, `buzz`, and `fizzbuzz` arrays.
-
-Complete Exercise 12 in the space below:
-*/
-
-const fizz = [];
-const buzz = [];
-const fizzbuzz = [];
-
-nums.forEach((num) => {
-    if (num%3 === 0) {
-        fizz.push(num);
-    }
-})
-
-nums.forEach((num) => {
-    if (num%5 === 0) {
-        buzz.push(num);
-    }
-})
-
-nums.forEach((num) => {
-    if ((num%3 === 0) && (num%5 === 0)) {
-        fizzbuzz.push(num);
-    }
-}) 
-
-console.log('Exercise 12 Results:');
-console.log('  fizz:', fizz);
-console.log('  buzz:', buzz);
-console.log('  fizzbuzz:', fizzbuzz);
-
-
-
-
-/* iterating through elements of OG nums array: 100, 5, 23, 15, 21, 72, 9, 45, 66, 7, 81, 90
-so expected output(s) for our new arrays would be...
-fizz: 15, 21, 72, 9, 45, 66, 81, 90
-buzz: 100, 5, 15, 45, 90
-fizzbuzz: 15, 45, 90 */
-
-
-
-
-
-
-
-
-/*
-Exercise 13: Retrieve the Last Array
-
-1) Assign the last nested array in the `numArrays` below to a variable named
-   `numList`. As you do this, also fulfill these goals:
-
-   - Assume you don't know how many nested arrays `numArrays` contains.
-   - Do not alter the original `numArrays` array.
-
-Complete Exercise 13 in the space below:
-*/
-
-
-
-const numArrays = [
-	[100, 5, 23],
-	[15, 21, 72, 9],
-	[45, 66],
-	[7, 81, 90]
-];
-
-
-//console.log('Exercise 13 result:', numList);
-
-
-
-
-
-
-
-
-/*
-Exercise 14: Accessing within nested arrays
-
-1) Retrieve the number `66` from the `numArrays` array. As part of this process
-   do not alter the original `numArrays` array.
-
-2) Assign it to a variable called `num`.
-
-Complete Exercise 14 in the space below:
-*/
-
-
-
-const num = numArrays[2][1];
-// accesssing the third nested array's (index 2) second value (index 1)
-
-console.log('Exercise 14 result:', num);
-
-
-
-
-
-
-/*
-Exercise 15: Nested array sum
-
-1) Use nested loops or `forEach()` methods to sum up all numbers within 
-   `numArrays` nested arrays.
-   
-2) Assign the sum to a variable called `total`.
-
-Hint: Be sure to declare and initialize the total variable before the iterations.
-
-Complete Exercise 15 in the space below:
-*/
-
-
-
-
-
-
-//const sampleNums = [5, 10, 15, 20];
-
-/* 
-let sum;
-function sumArray(arr) {
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-  }
-  return sum;
+for (let i = 0; i < kitchenSink.length; i++) {
+    console.log(kitchenSink[i])
 }
 
-const total = sumArray(sampleNums);
-console.log("Practice results = ", total);
-*/
 
 
-let total; 
 
-function totalArraySum(arr) {
-    let sum = 0;
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[i].length; j++)
-            sum += arr[i][j];
-    }
+
+//examples using OTHER types of loops from notes
+// for of....
+for (const element of kitchenSink) {
+    console.log(element)
 }
 
-total = totalArraySum(numArrays);
+//for each.... 
+kitchenSink.forEach((element) => console.log(element));
+// ^ the array DOT forEach() aka is an element of the array, ARROW print the element
 
-console.log(total);
 
-/* 
-let total = 0;
+// *************
 
-//numArrays.forEach((num) => {
+// ARRAY METHODS:
 
-})
-*/
 
-/*
-function sumArrays(numArrays) {
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    sum = sum + arr[i];
-  }
-  return sum;
+// ONE
+// .push(element) -- adds an element to the end of the array 
+kitchenSink.push("faucet")
+console.log(kitchenSink)
+// oushing multiple items...
+kitchenSink.push("bowl", "cup")
+console.log(kitchenSink)
+
+// TWO
+// .pop() -- removes an element from END of an array 
+kitchenSink.pop()
+console.log(kitchenSink)
+
+
+
+
+
+
+//THREE
+// .join() -- creates and returns a new STRING concatenating all elements of the array into a string 
+console.log(kitchenSink.join(" "))
+// within () after .join = DELIMINATOR, what will be displayed between the elements (like a space, otherwise nothing)
+
+
+
+
+
+
+// FOUR 
+// .shift() -- removes an element from the BEGINNING of an array
+kitchenSink.shift()
+console.log(kitchenSink)
+
+//FIVE
+// .unshift() --- ADDS element to the beginning....
+kitchenSink.unshift("mug")
+console.log(kitchenSink)
+
+
+
+
+
+// .splice(index to start removing, how many to remove)...............
+
+
+
+
+
+
+
+// .indexOf (element you are looking for)....................
+
+
+
+// ******************
+
+
+
+
+
+//MULTI-DIMENSIONAL ARRAYS
+
+// arrays can contain OTHER ARRAYS as elements
+
+const pairs = [['Snoopy', 'Linus'], ['Peppermint Patty', 'Woodstock']]
+console.log(pairs.length)
+
+
+// print Peppermint Patty...
+console.log(pairs[1] [0])
+
+
+
+// two dimensional arrays are SUPER useful for modeling grid like data
+// e.g. tic tac toe game layout
+
+// const grod = .........................
+
+const grid = {
+    [0, 1, 2]
 }
 
-const numbers = [1, 2, 3, 4, 5];
-const total = sumArray(numbers);
-*/
 
 
 
-//console.log('Exercise 15 result:\n', total);
 
-// expected output: 534 as total...
+
+
+
+
+
+
+
+// for terminology -- you ITERATE "OVER" AN ARRAY (or sometimes "through them")
+
+
+
+
